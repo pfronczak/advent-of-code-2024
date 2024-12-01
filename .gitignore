@@ -1,0 +1,12 @@
+coverage
+.idea
+.vscode
+template
+
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
