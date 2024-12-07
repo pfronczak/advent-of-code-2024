@@ -38,18 +38,9 @@ const readInput = (input: string[]) => {
 const day6_1 = (input: string[]): number => {
     const { grid, guard } = readInput(input);
     const tilesVisited = new Set<string>();
-    while (
-        guard.x >= 0 &&
-        guard.x < grid[0].length &&
-        guard.y >= 0 &&
-        guard.y < grid.length
-    ) {
+    while (guard.x >= 0 && guard.x < grid[0].length && guard.y >= 0 && guard.y < grid.length) {
         tilesVisited.add(`${guard.x},${guard.y}`);
-        if (
-            grid[guard.y + Pos.dirs[guard.dir].y]?.[
-                guard.x + Pos.dirs[guard.dir].x
-            ] === '#'
-        ) {
+        if (grid[guard.y + Pos.dirs[guard.dir].y]?.[guard.x + Pos.dirs[guard.dir].x] === '#') {
             guard.turn(1);
         } else {
             guard.move(guard.dir);
@@ -58,26 +49,14 @@ const day6_1 = (input: string[]): number => {
     return tilesVisited.size;
 };
 
-const cycleFound = (
-    startingPos: { x: number; y: number },
-    grid: string[][],
-): boolean => {
+const cycleFound = (startingPos: { x: number; y: number }, grid: string[][]): boolean => {
     const guard = new Pos(startingPos.x, startingPos.y);
     const tilesVisited = new Set<string>();
 
-    while (
-        guard.x >= 0 &&
-        guard.x < grid[0].length &&
-        guard.y >= 0 &&
-        guard.y < grid.length
-    ) {
+    while (guard.x >= 0 && guard.x < grid[0].length && guard.y >= 0 && guard.y < grid.length) {
         tilesVisited.add(`${guard.x},${guard.y},${guard.dir}`);
 
-        if (
-            grid[guard.y + Pos.dirs[guard.dir].y]?.[
-                guard.x + Pos.dirs[guard.dir].x
-            ] === '#'
-        ) {
+        if (grid[guard.y + Pos.dirs[guard.dir].y]?.[guard.x + Pos.dirs[guard.dir].x] === '#') {
             guard.turn(1);
         } else {
             guard.move(guard.dir);
@@ -90,18 +69,27 @@ const cycleFound = (
 };
 
 const day6_2 = (input: string[]): number => {
-    const { grid, guard } = readInput(input);
+    const { grid, guard: startingPos } = readInput(input);
+
+    const guard = new Pos(startingPos.x, startingPos.y);
+    const tilesVisited = new Set<string>();
+    while (guard.x >= 0 && guard.x < grid[0].length && guard.y >= 0 && guard.y < grid.length) {
+        tilesVisited.add(`${guard.x},${guard.y}`);
+        if (grid[guard.y + Pos.dirs[guard.dir].y]?.[guard.x + Pos.dirs[guard.dir].x] === '#') {
+            guard.turn(1);
+        } else {
+            guard.move(guard.dir);
+        }
+    }
+    tilesVisited.delete(`${startingPos.x},${startingPos.y}`);
+
     let obstructionPosCount = 0;
-    for (let y = 0; y < grid.length; y++) {
-        for (let x = 0; x < grid[y].length; x++) {
-            if (grid[y][x] === '#' || (x === guard.x && y === guard.y)) {
-                continue;
-            }
-            const gridCopy = grid.map((row) => [...row]);
-            gridCopy[y][x] = '#';
-            if (cycleFound(guard, gridCopy)) {
-                obstructionPosCount++;
-            }
+    for (const tile of tilesVisited) {
+        const [x, y] = tile.split(',').map((x) => parseInt(x));
+        const gridCopy = grid.map((row) => [...row]);
+        gridCopy[y][x] = '#';
+        if (cycleFound(startingPos, gridCopy)) {
+            obstructionPosCount++;
         }
     }
 
