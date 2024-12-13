@@ -40,7 +40,7 @@ describe('Day 12: Garden Groups', () => {
     });
 
     test('Part 2, example 5', () => {
-        expect(day12_2(inputFile('sample4.txt'))).toBe(368);
+        expect(day12_2(inputFile('sample5.txt'))).toBe(368);
     });
 
     test('Part 2, puzzle input', () => {
