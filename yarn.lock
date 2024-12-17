@@ -1335,6 +1335,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@datastructures-js/heap@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "@datastructures-js/heap@npm:4.3.3"
+  checksum: 10c0/569579f083d140c8577e04d4fbef1f1ae285701bd8d7c2cbd87a402c217fb4f12017c591c8381bc09a342c75a5a25758fa32efea2e91275b03ef8171b6be5030
+  languageName: node
+  linkType: hard
+
+"@datastructures-js/priority-queue@npm:^6.3.1":
+  version: 6.3.1
+  resolution: "@datastructures-js/priority-queue@npm:6.3.1"
+  dependencies:
+    "@datastructures-js/heap": "npm:^4.3.3"
+  checksum: 10c0/fb16bd87e1781ce18f00e4de3f1cb7751bc1022992821a5e3f72f434f430841d3e73a22c35dcd102f14ac421552a5a5dda04d48ce4395fb8c2211a31ca246ada
+  languageName: node
+  linkType: hard
+
 "@esbuild/aix-ppc64@npm:0.23.1":
   version: 0.23.1
   resolution: "@esbuild/aix-ppc64@npm:0.23.1"
@@ -1994,6 +2010,7 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-typescript": "npm:^7.26.0"
+    "@datastructures-js/priority-queue": "npm:^6.3.1"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
     babel-jest: "npm:^29.7.0"
