@@ -16,10 +16,10 @@ describe('Day 22: Monkey Market', () => {
     });
 
     test('Part 2, example 1', () => {
-        expect(day22_2(inputFile('sample.txt'))).toBe(0);
+        expect(day22_2(inputFile('sample2.txt'))).toBe(23);
     });
 
     test('Part 2, puzzle input', () => {
-        expect(day22_2(inputFile('input.txt'))).toBe(0);
+        expect(day22_2(inputFile('input.txt'))).toBe(1710);
     });
 });

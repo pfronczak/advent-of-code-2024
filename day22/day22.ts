@@ -19,7 +19,36 @@ const day22_1 = (input: string[]): number => {
 };
 
 const day22_2 = (input: string[]): number => {
-    return 0;
+    const seqToPrice = new Map<string, number>();
+    for (const line of input) {
+        let secret = parseInt(line);
+        let seq: number[] = [];
+        let prevPrice: number | null = null;
+        let seqKeys = new Set<String>();
+        for (let i = 0; i < 2000; i++) {
+            secret = nextSecret(secret);
+            let price = secret % 10;
+            if (prevPrice != null) {
+                seq.push(price - prevPrice);
+            }
+            if (seq.length === 4) {
+                let seqStr = seq.join(',');
+                if (!seqKeys.has(seqStr)) {
+                    seqToPrice.set(seqStr, (seqToPrice.get(seqStr) ?? 0) + price);
+                }
+                seqKeys.add(seqStr);
+                seq.shift();
+            }
+            prevPrice = price;
+        }
+    }
+    let maxPrice = 0;
+    for (const [seq, price] of seqToPrice) {
+        if (price > maxPrice) {
+            maxPrice = price;
+        }
+    }
+    return maxPrice;
 };
 
 export { day22_1, day22_2 };
