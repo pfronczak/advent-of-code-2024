@@ -24,6 +24,6 @@ describe('Day 15: Warehouse Woes', () => {
     });
 
     test('Part 2, puzzle input', () => {
-        expect(day15_2(inputFile('input.txt'))).toBe(0);
+        expect(day15_2(inputFile('input.txt'))).toBe(1538862);
     });
 });
