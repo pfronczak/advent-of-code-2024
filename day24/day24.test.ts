@@ -20,10 +20,10 @@ describe('Day 24: Crossed Wires', () => {
     });
 
     test('Part 2, example 1', () => {
-        expect(day24_2(inputFile('sample.txt'))).toBe(0);
+        day24_2(inputFile('sample.txt'), 'sample');
     });
 
     test('Part 2, puzzle input', () => {
-        expect(day24_2(inputFile('input.txt'))).toBe(0);
+        day24_2(inputFile('input.txt'), 'input');
     });
 });

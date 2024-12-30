@@ -1,0 +1,20 @@
+digraph {
+x00
+x01
+x02
+y00
+y01
+y02
+"x00 AND y00" [shape=box]
+"x00" -> "x00 AND y00"
+"y00" -> "x00 AND y00"
+"x00 AND y00" -> "z00"
+"x01 XOR y01" [shape=diamond]
+"x01" -> "x01 XOR y01"
+"y01" -> "x01 XOR y01"
+"x01 XOR y01" -> "z01"
+"x02 OR y02" [shape=octagon]
+"x02" -> "x02 OR y02"
+"y02" -> "x02 OR y02"
+"x02 OR y02" -> "z02"
+}
